@@ -35,4 +35,16 @@ brfss = brfss_smart2010 %>%
   arrange(year, locationdesc, response)
 ```
 
+## Problem 1.1
+
+```{r Problem_1_1}
+brfss %>%  
+  filter(year == "2002") %>% 
+  group_by(locationabbr) %>%
+  summarize(n_locations = n_distinct(locationdesc)) %>% 
+  filter(n_locations == 7)
+```
+
+In 2002, CT, FL, and NC states were observed at 7 locations.
+
 
