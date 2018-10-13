@@ -16,3 +16,9 @@ knitr::opts_chunk$set(
 
 theme_set(theme_bw() + theme(legend.position = "bottom"))
 ```
+
+```{r install_github_dataset}
+# install.packages("devtools")
+devtools::install_github("p8105/p8105.datasets")
+library(p8105.datasets)
+```
