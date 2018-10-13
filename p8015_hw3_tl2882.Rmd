@@ -241,9 +241,47 @@ instacart %>%
   group_by(product_name, order_dow) %>% 
   summarise(mean_hour = mean(order_hour_of_day)) %>% 
   spread(key = order_dow, value = mean_hour) %>% 
-  rename('Sun.' = '0', 'Mon.' = '1', 'Tues.' = '2', 'Wed.' = '3', 'Thur' = '4', 
+  rename('Sun.' = '0', 'Mon.' = '1', 'Tues.' = '2', 'Wed.' = '3', 'Thur.' = '4', 
          'Fri.' = '5', 'Sat.' = '6') %>% 
   knitr::kable(digits = 1)
 ```
 
 This is the table showing the mean hour of the day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week.
+
+# Problem 3
+
+```{r exploration2}
+head(ny_noaa)
+```
+
+This is data from a deliver company named Instacart.
+
+It is a 2,595,176 rows X 7 columns data frame, which means it has 2,595,176 observations and 7 variables.
+
+Those 7 variables are:
+"id": <chr> Weather station ID
+"date": <date> Date of observation
+"prcp": <int> Precipitation (tenths of mm)
+"snow": <int> Snowfall (mm)
+"snwd": <int> Snow depth (mm)
+"tmax": <chr> Maximum temperature (tenths of degrees C)
+"tmin": <chr> Minimum temperature (tenths of degrees C)
+
+Key variable: "id" and "date"
+With the ID and the date, we can specify every observation.
+
+Missing data:
+
+"prcp": ```r nrow(filter(ny_noaa, is.na(prcp)))``` observations are missing, proportion:```r nrow(filter(ny_noaa, is.na(prcp)))/2595176``` 
+
+"snow": ```r nrow(filter(ny_noaa, is.na(snow)))``` observations are missing, proportion: ```r nrow(filter(ny_noaa, is.na(snow)))/2595176``` 
+
+"snwd": ```r nrow(filter(ny_noaa, is.na(snwd)))``` observations are missing, proportion: ```r nrow(filter(ny_noaa, is.na(snwd)))/2595176``` 
+
+"tmax": ```r nrow(filter(ny_noaa, is.na(tmax)))``` observations are missing, proportion: ```r nrow(filter(ny_noaa, is.na(tmax)))/2595176``` 
+
+"tmin": ```r nrow(filter(ny_noaa, is.na(tmin)))``` observations are missing, proportion: ```r nrow(filter(ny_noaa, is.na(tmin)))/2595176``` 
+
+Reason: (Acccording to description)
+
+"About one half of the stations report precipitation only. Both the record length and period of record vary by station and cover intervals ranging from less than a year to more than 175 years."
