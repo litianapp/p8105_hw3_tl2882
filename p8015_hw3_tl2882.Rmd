@@ -47,4 +47,21 @@ brfss %>%
 
 In 2002, CT, FL, and NC states were observed at 7 locations.
 
+## Problem 1.2
 
+```{r Problem_1_2}
+brfss %>%  
+  group_by(year, locationabbr) %>%
+  summarize(n_locations = n_distinct(locationdesc)) %>%
+  ggplot(aes(x = year, y = n_locations, color = locationabbr)) + 
+    geom_line() + 
+    labs(title = "The number of locations in each state from 2002 to 2010",
+         x = "Year", 
+         y = "Number of locations", 
+         caption = "Data from the p8105.datasets") + 
+    viridis::scale_color_viridis(name = "State", discrete = TRUE) +
+    theme(legend.position = "right")
+```
+
+This is the “spaghetti plot” that shows the number of locations in each state from 2002 to 2010.  
+Y is "Number of observations", X is "Year", and each line represents a different state.
