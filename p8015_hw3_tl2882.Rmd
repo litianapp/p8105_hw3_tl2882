@@ -92,6 +92,7 @@ brfss %>%
       title =
         "Distribution of these state-level averages over time (for each response separately)",
       caption = "Data from the p8105.datasets") + 
+    theme(axis.text.x = element_text(angle = 90)) +
     facet_grid(~response) + 
     viridis::scale_fill_viridis(discrete = TRUE)
 ```
