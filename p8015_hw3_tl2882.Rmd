@@ -232,3 +232,18 @@ instacart %>%
 ```
 
 This is the table showing the most popular item in each of the aisles “baking ingredients”, “dog food care”, and “packaged vegetables fruits”.
+
+## Problem 2.4
+
+```{r Problem_2_4}
+instacart %>% 
+  filter(product_name == "Pink Lady Apples" | product_name == "Coffee Ice Cream") %>% 
+  group_by(product_name, order_dow) %>% 
+  summarise(mean_hour = mean(order_hour_of_day)) %>% 
+  spread(key = order_dow, value = mean_hour) %>% 
+  rename('Sun.' = '0', 'Mon.' = '1', 'Tues.' = '2', 'Wed.' = '3', 'Thur' = '4', 
+         'Fri.' = '5', 'Sat.' = '6') %>% 
+  knitr::kable(digits = 1)
+```
+
+This is the table showing the mean hour of the day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week.
