@@ -129,3 +129,15 @@ They are from aisle "yogurt", "other creams cheeses", "fresh vegetables", "fresh
 
 They are from department "dairy eggs", "dairy eggs", "produce", "produce", "canned goods", "produce", "produce", "dairy eggs" respectively.
 
+## Problem 2.1
+
+```{r Problem_2_1}
+unique(instacart$aisle) %>% 
+  length()
+  
+instacart %>% 
+  count(aisle) %>% 
+  filter(min_rank(desc(n)) == 1)
+```
+
+There are 134 aisles, and the "fresh vegetables" is the most items ordered from.
