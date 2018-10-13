@@ -79,3 +79,24 @@ brfss %>%
 ```
 
 This is the table showing, for the years 2002, 2006, and 2010, the mean (as in "excellent_mean") and standard deviation (as in "excellent_sd") of the proportion of “Excellent” responses across locations in NY State.
+
+## Problem 1.4
+
+```{r Problem_1_4}
+brfss %>% 
+  group_by(year, locationabbr, response) %>% 
+  summarize(proportion_mean = mean(data_value)) %>% 
+  ggplot(aes(x = year, y = proportion_mean, color = locationabbr)) + 
+    geom_line() + 
+    labs(
+      title =
+        "Distribution of these state-level averages over time (for each response separately)",
+      caption = "Data from the p8105.datasets") + 
+    facet_grid(~response) + 
+    viridis::scale_fill_viridis(discrete = TRUE)
+```
+
+* I chose "geom_line" because line chart shows the trend of data at equal time intervals, which reflects the distribution of these state-level averages over time best.
+
+This is the five-panel plot that shows, for each response category separately, the distribution of these state-level averages over time.
+
