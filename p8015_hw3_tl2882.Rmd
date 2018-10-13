@@ -312,3 +312,40 @@ ny_noaa_tidy %>%
 For snowfall, "0" is the most commonly observed value.
 
 Because in most of the days, new york doen't snow.
+
+## Problem 3.2
+
+```{r Problem_3_2}
+ny_nona_meanmax = 
+  ny_noaa_tidy %>% 
+  filter(month %in% c("01", "07")) %>%
+  group_by(id, month) %>%
+  summarize(tmax_mean = mean(tmax, na.rm = TRUE))
+
+ny_nona_meanmax %>% 
+#  filter(!is.na(tmax_mean)) %>% 
+  ggplot(aes(y = tmax_mean)) + 
+    geom_boxplot() + 
+    labs(
+      title = "The average max temperatrue in Jan. and July",
+      y = "average max temperature(°C)") + 
+    facet_grid(~month)
+
+ny_nona_meanmax %>%
+  filter(month == "01") %>% 
+  .$tmax_mean %>% 
+  boxplot.stats()
+
+ny_nona_meanmax %>%
+  filter(month == "07") %>% 
+  .$tmax_mean %>% 
+  boxplot.stats()
+```
+
+* I choose boxplot because it is a great method for graphically depicting groups of numerical data through their quartiles. And it can show the outliers clearly.
+
+In January, outliers: 
+"-9.983721", "-8.021429", "5.666129", "-12.200000" (°C)
+
+In January, outliers: 
+"23.51538", "23.51621", "23.33546", "31.47204", "22.41384", "23.53814" (°C)
