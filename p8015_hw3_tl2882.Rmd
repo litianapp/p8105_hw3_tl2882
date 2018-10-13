@@ -101,3 +101,31 @@ brfss %>%
 
 This is the five-panel plot that shows, for each response category separately, the distribution of these state-level averages over time.
 
+
+# Problem 2
+
+```{r exploration}
+head(instacart)
+```
+
+## Exploration of this dataset
+
+This is data from a deliver company named Instacart.
+
+It is a 1,384,617 rows X 15 columns data frame, which means it has 1,384,617 observations and 15 variables.
+
+The tpypes of "eval_set", "product_name", "aisle" and "department" are "character", others are "int".
+
+Key variable: "order_id" and "product_id".  
+With the order ID and product ID (or product name), we can specify every observation.
+
+Illustrative examples of observations:  
+For example,  
+for order ID 1 (order number 4), it means that a person (user ID 112108) orderd 8 items at 10:00, Thursday, 9 days after last order.
+
+Those items are: "Bulgarian Yogurt", "Organic 4% Milk Fat Whole Milk Cottage Cheese", "Organic Celery Hearts", "Cucumber Kirby", "Lightly Smoked Sardines in Olive Oil", "Bag of Organic Bananas", "Organic Hass Avocado", "Organic Whole String Cheese".
+
+They are from aisle "yogurt", "other creams cheeses", "fresh vegetables", "fresh vegetables", "canned meat seafood", "fresh fruits", "fresh fruits", "packaged cheese" respectively.
+
+They are from department "dairy eggs", "dairy eggs", "produce", "produce", "canned goods", "produce", "produce", "dairy eggs" respectively.
+
