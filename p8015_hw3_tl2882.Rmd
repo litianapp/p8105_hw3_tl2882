@@ -219,3 +219,16 @@ Because there are too many aisles, I separate them to 8 figures according to the
 
 This is the plot that shows the number of items ordered in each aisle.
 
+## Problem 2.3
+
+```{r Problem_2_3}
+instacart %>% 
+  filter(aisle == "baking ingredients" | aisle == "dog food care" | 
+         aisle == "packaged vegetables fruits") %>% 
+  group_by(aisle, product_name) %>% 
+  summarize(n = n()) %>% 
+  filter(min_rank(desc(n)) == 1) %>% 
+  knitr::kable(digits = 1)
+```
+
+This is the table showing the most popular item in each of the aisles “baking ingredients”, “dog food care”, and “packaged vegetables fruits”.
